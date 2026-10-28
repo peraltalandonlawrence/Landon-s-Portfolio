@@ -24,14 +24,24 @@
    * While empty, both forms validate input and hand off to the visitor's email
    * app; they never report a message as sent.
    */
-  const CONTACT_ENDPOINT = "";
+  const CONTACT_ENDPOINT = "https://formspree.io/f/xljjnvev";
 
   const PAGES = [
     { id: "home", href: "index.html", label: "Home" },
-    { id: "experience", href: "experience.html", label: "Experience", full: "Professional Experience" },
+    {
+      id: "experience",
+      href: "experience.html",
+      label: "Experience",
+      full: "Professional Experience",
+    },
     { id: "organizations", href: "organizations.html", label: "Organizations" },
     { id: "projects", href: "projects.html", label: "Projects" },
-    { id: "skills", href: "skills.html", label: "Skills", full: "Skills & Technologies" },
+    {
+      id: "skills",
+      href: "skills.html",
+      label: "Skills",
+      full: "Skills & Technologies",
+    },
     { id: "certificates", href: "certificates.html", label: "Certificates" },
   ];
 
@@ -42,35 +52,40 @@
       icon: "🎓",
       title: "Internship / OJT",
       desc: "Practicum or on-the-job training",
-      placeholder: "Role, department, duration or required hours, and setup (on-site, hybrid or remote)…",
+      placeholder:
+        "Role, department, duration or required hours, and setup (on-site, hybrid or remote)…",
     },
     {
       id: "employment",
       icon: "💼",
       title: "Employment",
       desc: "Full-time or part-time position",
-      placeholder: "Position, key responsibilities, work arrangement and location…",
+      placeholder:
+        "Position, key responsibilities, work arrangement and location…",
     },
     {
       id: "freelance",
       icon: "🛠️",
       title: "Freelance / Contract",
       desc: "Project-based or short-term work",
-      placeholder: "What you need built or managed, scope and expected timeline…",
+      placeholder:
+        "What you need built or managed, scope and expected timeline…",
     },
     {
       id: "speaking",
       icon: "🎤",
       title: "Speaking Engagement",
       desc: "Seminar, workshop, webinar or talk",
-      placeholder: "Event name, topic, audience, format (in-person or online) and venue…",
+      placeholder:
+        "Event name, topic, audience, format (in-person or online) and venue…",
     },
     {
       id: "event",
       icon: "🤝",
       title: "Event Collaboration",
       desc: "Hackathon, judging, mentoring or partnership",
-      placeholder: "Event name, the role you have in mind, date and organizers…",
+      placeholder:
+        "Event name, the role you have in mind, date and organizers…",
     },
     {
       id: "other",
@@ -83,8 +98,16 @@
 
   const STARTERS = [
     { icon: "👋", label: "Just saying hi", text: "Hi Landon! " },
-    { icon: "💡", label: "Question about a project", text: "Hi Landon, I have a question about one of your projects: " },
-    { icon: "🤝", label: "Collaboration idea", text: "Hi Landon, I have an idea we could work on together: " },
+    {
+      icon: "💡",
+      label: "Question about a project",
+      text: "Hi Landon, I have a question about one of your projects: ",
+    },
+    {
+      icon: "🤝",
+      label: "Collaboration idea",
+      text: "Hi Landon, I have an idea we could work on together: ",
+    },
   ];
 
   const ICONS = {
@@ -92,21 +115,34 @@
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/><path d="M8.5 11h7M8.5 14.5h4"/></svg>',
     close:
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>',
-    mail:
-      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',
-    send:
-      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 10 14"/><path d="m21 3-7 18-4-7-7-4 18-7Z"/></svg>',
+    mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',
+    send: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 10 14"/><path d="m21 3-7 18-4-7-7-4 18-7Z"/></svg>',
   };
 
   const root = document.documentElement;
   root.classList.add("js");
 
   const currentId = document.body.dataset.page || "home";
-  const currentIndex = Math.max(0, PAGES.findIndex((p) => p.id === currentId));
+  const currentIndex = Math.max(
+    0,
+    PAGES.findIndex((p) => p.id === currentId),
+  );
   const pad = (n) => String(n).padStart(2, "0");
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  );
   const escapeHtml = (s) =>
-    String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+    String(s).replace(
+      /[&<>"']/g,
+      (c) =>
+        ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        })[c],
+    );
   const firstWord = (s) => s.trim().split(/\s+/)[0] || "there";
 
   /* ---------- Header + navigation ---------- */
@@ -143,11 +179,15 @@
 
     const setOpen = (open) => {
       toggle.setAttribute("aria-expanded", String(open));
-      toggle.querySelector(".nav-toggle__text").textContent = open ? "Close" : "Menu";
+      toggle.querySelector(".nav-toggle__text").textContent = open
+        ? "Close"
+        : "Menu";
       nav.classList.toggle("is-open", open);
     };
 
-    toggle.addEventListener("click", () => setOpen(toggle.getAttribute("aria-expanded") !== "true"));
+    toggle.addEventListener("click", () =>
+      setOpen(toggle.getAttribute("aria-expanded") !== "true"),
+    );
 
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && nav.classList.contains("is-open")) {
@@ -157,7 +197,8 @@
     });
 
     document.addEventListener("click", (e) => {
-      if (nav.classList.contains("is-open") && !header.contains(e.target)) setOpen(false);
+      if (nav.classList.contains("is-open") && !header.contains(e.target))
+        setOpen(false);
     });
 
     desktop.addEventListener("change", () => setOpen(false));
@@ -210,7 +251,7 @@
           }
         });
       },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
     );
     targets.forEach((el) => io.observe(el));
   }
@@ -229,7 +270,8 @@
         img.classList.add("is-missing");
       };
       img.addEventListener("error", fail);
-      if (img.complete && img.naturalWidth === 0 && img.getAttribute("src")) fail();
+      if (img.complete && img.naturalWidth === 0 && img.getAttribute("src"))
+        fail();
     });
   }
 
@@ -240,12 +282,15 @@
   function trapTab(container, e) {
     if (e.key !== "Tab") return;
     const items = [...container.querySelectorAll(FOCUSABLE)].filter(
-      (el) => el.offsetParent !== null || el.classList.contains("choice__input")
+      (el) =>
+        el.offsetParent !== null || el.classList.contains("choice__input"),
     );
     // Radios in a group are one tab stop: keep only the checked one (or the first).
     const filtered = items.filter((el) => {
       if (el.type !== "radio") return true;
-      const group = items.filter((r) => r.type === "radio" && r.name === el.name);
+      const group = items.filter(
+        (r) => r.type === "radio" && r.name === el.name,
+      );
       const checked = group.find((r) => r.checked);
       return checked ? el === checked : el === group[0];
     });
@@ -286,7 +331,12 @@
 
   let activePanel = null;
   const shellParts = () =>
-    [document.getElementById("site-header"), document.querySelector("main"), document.getElementById("site-footer"), document.querySelector(".skip-link")].filter(Boolean);
+    [
+      document.getElementById("site-header"),
+      document.querySelector("main"),
+      document.getElementById("site-footer"),
+      document.querySelector(".skip-link"),
+    ].filter(Boolean);
 
   /**
    * Build a contact panel.
@@ -331,15 +381,21 @@
       panel.classList.add("is-open");
       scrim.classList.add("is-open");
       launcher.classList.add("is-hidden");
-      if (cfg.id === "contact-panel") launcher.setAttribute("aria-expanded", "true");
+      if (cfg.id === "contact-panel")
+        launcher.setAttribute("aria-expanded", "true");
       shellParts().forEach((el) => (el.inert = true));
       launcher.inert = true;
       activePanel = api;
-      const focusTarget = cfg.firstFocus ? cfg.firstFocus(form) : form.querySelector("input, textarea");
+      const focusTarget = cfg.firstFocus
+        ? cfg.firstFocus(form)
+        : form.querySelector("input, textarea");
       // Only move focus if the visitor (or autofill) hasn't already started inside the panel.
-      setTimeout(() => {
-        if (!panel.contains(document.activeElement)) focusTarget.focus();
-      }, prefersReducedMotion.matches ? 0 : 60);
+      setTimeout(
+        () => {
+          if (!panel.contains(document.activeElement)) focusTarget.focus();
+        },
+        prefersReducedMotion.matches ? 0 : 60,
+      );
     };
 
     const close = (restoreFocus = true) => {
@@ -350,10 +406,16 @@
       shellParts().forEach((el) => (el.inert = false));
       launcher.inert = false;
       activePanel = null;
-      if (restoreFocus) (lastTrigger && document.contains(lastTrigger) ? lastTrigger : launcher).focus();
+      if (restoreFocus)
+        (lastTrigger && document.contains(lastTrigger)
+          ? lastTrigger
+          : launcher
+        ).focus();
     };
 
-    panel.querySelector("[data-close]").addEventListener("click", () => close());
+    panel
+      .querySelector("[data-close]")
+      .addEventListener("click", () => close());
     panel.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         e.stopPropagation();
@@ -396,7 +458,9 @@
     const setBusy = (busy) => {
       submit.disabled = busy;
       submit.setAttribute("aria-busy", String(busy));
-      submit.innerHTML = busy ? '<span class="spinner" aria-hidden="true"></span>Sending…' : cfg.submitLabel;
+      submit.innerHTML = busy
+        ? '<span class="spinner" aria-hidden="true"></span>Sending…'
+        : cfg.submitLabel;
     };
 
     const mailtoHref = (data) =>
@@ -411,8 +475,13 @@
 
       const okAll = keys.map(validateField).every(Boolean);
       if (!okAll) {
-        const bad = keys.map(target).find((el) => el.getAttribute("aria-invalid") === "true");
-        (bad.matches("input, textarea") ? bad : bad.querySelector("input")).focus();
+        const bad = keys
+          .map(target)
+          .find((el) => el.getAttribute("aria-invalid") === "true");
+        (bad.matches("input, textarea")
+          ? bad
+          : bad.querySelector("input")
+        ).focus();
         return;
       }
       if (form.elements.hp.value) return; // honeypot: stop bots without faking success
@@ -431,7 +500,10 @@
       try {
         const res = await fetch(CONTACT_ENDPOINT, {
           method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
           body: JSON.stringify({ ...data, _subject: cfg.subject(data) }),
           signal: controller.signal,
         });
@@ -439,7 +511,10 @@
         form.reset();
         keys.forEach((k) => target(k).removeAttribute("aria-invalid"));
         cfg.onReset && cfg.onReset(panel);
-        setStatus("success", cfg.messages.success(name, escapeHtml(data.email)));
+        setStatus(
+          "success",
+          cfg.messages.success(name, escapeHtml(data.email)),
+        );
       } catch (err) {
         setStatus("error", cfg.messages.error(name) + mailButton(data));
       } finally {
@@ -460,7 +535,7 @@
 
     const starters = STARTERS.map(
       (s, i) =>
-        `<button class="starter" type="button" data-starter="${i}"><span aria-hidden="true">${s.icon}</span> ${s.label}</button>`
+        `<button class="starter" type="button" data-starter="${i}"><span aria-hidden="true">${s.icon}</span> ${s.label}</button>`,
     ).join("");
 
     const api = createPanel({
@@ -496,16 +571,23 @@
           <p class="field__error" id="${ID}-message-err"></p>
         </div>`,
       rules: {
-        name: (f) => (f.elements.name.value.trim() ? "" : "I'd love to know who I'm talking to — please add your name."),
+        name: (f) =>
+          f.elements.name.value.trim()
+            ? ""
+            : "I'd love to know who I'm talking to — please add your name.",
         email: (f) => {
           const v = f.elements.email.value.trim();
           if (!v) return "Please add your email so I can reply.";
-          return EMAIL_RE.test(v) ? "" : "That email doesn't look quite right — try something like name@example.com.";
+          return EMAIL_RE.test(v)
+            ? ""
+            : "That email doesn't look quite right — try something like name@example.com.";
         },
         message: (f) => {
           const v = f.elements.message.value.trim();
           if (!v) return "Don't be shy — write a message.";
-          return v.length < 10 ? "Just a little more, please — at least 10 characters." : "";
+          return v.length < 10
+            ? "Just a little more, please — at least 10 characters."
+            : "";
         },
       },
       build: (f) => ({
@@ -516,7 +598,8 @@
       }),
       subject: (d) => `Portfolio message from ${d.name}`,
       mailBody: (d) => `${d.message}\n\n— ${d.name} (${d.email})`,
-      onReset: (panel) => (panel.querySelector("[data-count]").textContent = "0"),
+      onReset: (panel) =>
+        (panel.querySelector("[data-count]").textContent = "0"),
       messages: {
         notConfigured: (n) =>
           `<strong>Not sent yet, ${n}.</strong>Direct sending isn't switched on for this site, so your message hasn't gone anywhere. Tap below to send it from your email app — everything's already filled in.`,
@@ -546,8 +629,11 @@
         }
         // Don't scroll: the starter buttons should stay put under the pointer.
         textarea.focus({ preventScroll: true });
-        textarea.setSelectionRange(textarea.value.length, textarea.value.length);
-      })
+        textarea.setSelectionRange(
+          textarea.value.length,
+          textarea.value.length,
+        );
+      }),
     );
 
     launcher.addEventListener("click", () => api.open(launcher));
@@ -555,7 +641,7 @@
       el.addEventListener("click", (e) => {
         e.preventDefault();
         api.open(el);
-      })
+      }),
     );
     return api;
   }
@@ -576,7 +662,7 @@
             <span class="choice__icon" aria-hidden="true">${o.icon}</span>
             <span><span class="choice__title">${o.title}</span><span class="choice__desc">${o.desc}</span></span>
           </span>
-        </label>`
+        </label>`,
     ).join("");
 
     const api = createPanel({
@@ -592,7 +678,9 @@
             <h2 class="contact-panel__title" id="${ID}-title">Let's work together</h2>
           </div>
         </div>`,
-      firstFocus: (f) => f.querySelector('input[name="type"]:checked') || f.querySelector('input[name="type"]'),
+      firstFocus: (f) =>
+        f.querySelector('input[name="type"]:checked') ||
+        f.querySelector('input[name="type"]'),
       body: `
         <p class="contact-panel__lede">Thanks for thinking of me! Tell me a bit about the opportunity and I'll get back to you.</p>
         <fieldset class="choice-group" data-field="type" aria-describedby="${ID}-type-err">
@@ -628,17 +716,23 @@
           <p class="field__error" id="${ID}-message-err"></p>
         </div>`,
       rules: {
-        type: (f) => (f.elements.type.value ? "" : "Please choose the type of opportunity."),
-        name: (f) => (f.elements.name.value.trim() ? "" : "Please add your name."),
+        type: (f) =>
+          f.elements.type.value ? "" : "Please choose the type of opportunity.",
+        name: (f) =>
+          f.elements.name.value.trim() ? "" : "Please add your name.",
         email: (f) => {
           const v = f.elements.email.value.trim();
           if (!v) return "Please add your email so I can reply.";
-          return EMAIL_RE.test(v) ? "" : "Enter a valid email, like name@example.com.";
+          return EMAIL_RE.test(v)
+            ? ""
+            : "Enter a valid email, like name@example.com.";
         },
         message: (f) => {
           const v = f.elements.message.value.trim();
           if (!v) return "Please share a few details about the opportunity.";
-          return v.length < 10 ? "A little more detail, please — at least 10 characters." : "";
+          return v.length < 10
+            ? "A little more detail, please — at least 10 characters."
+            : "";
         },
       },
       build: (f) => {
@@ -653,7 +747,8 @@
           message: f.elements.message.value.trim(),
         };
       },
-      subject: (d) => `[${d.type}] Opportunity from ${d.name}${d.organization ? ` (${d.organization})` : ""}`,
+      subject: (d) =>
+        `[${d.type}] Opportunity from ${d.name}${d.organization ? ` (${d.organization})` : ""}`,
       mailBody: (d) =>
         [
           `Opportunity type: ${d.type}`,
@@ -686,8 +781,12 @@
       const type = OPPORTUNITIES.find((o) => o.id === form.elements.type.value);
       const isEvent = type && (type.id === "speaking" || type.id === "event");
       timelineLabel.textContent = isEvent ? "Event date" : "Target start date";
-      timelineInput.placeholder = isEvent ? "e.g. November 15, 2026" : "e.g. January 2027";
-      details.placeholder = type ? type.placeholder : "Pick an opportunity type above and I'll suggest what to include…";
+      timelineInput.placeholder = isEvent
+        ? "e.g. November 15, 2026"
+        : "e.g. January 2027";
+      details.placeholder = type
+        ? type.placeholder
+        : "Pick an opportunity type above and I'll suggest what to include…";
     }
     form.addEventListener("change", (e) => {
       if (e.target.name === "type") syncType();
@@ -697,7 +796,7 @@
       el.addEventListener("click", (e) => {
         e.preventDefault();
         api.open(el);
-      })
+      }),
     );
     return api;
   }
@@ -718,16 +817,21 @@
     const empty = document.querySelector("[data-cert-empty]");
     const live = document.querySelector("[data-cert-status]");
     const valid = buttons.map((b) => b.dataset.filter);
-    const labelOf = (f) => buttons.find((b) => b.dataset.filter === f).dataset.label;
+    const labelOf = (f) =>
+      buttons.find((b) => b.dataset.filter === f).dataset.label;
     const matches = (item, f) => f === "all" || item.dataset.category === f;
 
     buttons.forEach((b) => {
-      b.querySelector(".filter__count").textContent = items.filter((i) => matches(i, b.dataset.filter)).length;
+      b.querySelector(".filter__count").textContent = items.filter((i) =>
+        matches(i, b.dataset.filter),
+      ).length;
     });
 
     const apply = (f, { announce = false, updateUrl = false } = {}) => {
       if (!valid.includes(f)) f = "all";
-      buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.filter === f)));
+      buttons.forEach((b) =>
+        b.setAttribute("aria-pressed", String(b.dataset.filter === f)),
+      );
       let shown = 0;
       items.forEach((item) => {
         const show = matches(item, f);
@@ -756,8 +860,14 @@
       }
     };
 
-    buttons.forEach((b) => b.addEventListener("click", () => apply(b.dataset.filter, { announce: true, updateUrl: true })));
-    window.addEventListener("hashchange", () => apply(location.hash.slice(1), { announce: true }));
+    buttons.forEach((b) =>
+      b.addEventListener("click", () =>
+        apply(b.dataset.filter, { announce: true, updateUrl: true }),
+      ),
+    );
+    window.addEventListener("hashchange", () =>
+      apply(location.hash.slice(1), { announce: true }),
+    );
     apply(location.hash.slice(1) || "all");
   }
 
@@ -781,7 +891,9 @@
     const title = dialog.querySelector(".lightbox__title");
     let opener = null;
 
-    dialog.querySelector("button").addEventListener("click", () => dialog.close());
+    dialog
+      .querySelector("button")
+      .addEventListener("click", () => dialog.close());
     dialog.addEventListener("click", (e) => {
       if (e.target === dialog) dialog.close();
     });
@@ -795,7 +907,7 @@
         img.alt = source.alt;
         title.textContent = btn.dataset.lightbox;
         dialog.showModal();
-      })
+      }),
     );
   }
 
