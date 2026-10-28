@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certificates — Landon Lawrence A. Peralta</title>
+    <meta
+      name="description"
+      content="Certificates, awards and recognitions of Landon Lawrence A. Peralta."
+    />
+    <meta name="theme-color" content="#2952a1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
+  </head>
+
+  <body data-page="certificates">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="backdrop" aria-hidden="true"></div>
+
+    <header class="site-header" id="site-header">
+      <noscript>
+        <nav class="container noscript-nav" aria-label="Main">
+          <a href="index.html">Home</a>
+          <a href="experience.html">Professional Experience</a>
+          <a href="organizations.html">Organizations</a>
+          <a href="projects.html">Projects</a>
+          <a href="skills.html">Skills &amp; Technologies</a>
+          <a href="certificates.html" aria-current="page">Certificates</a>
+        </nav>
+      </noscript>
+    </header>
+
+    <main id="main">
+      <header class="container page-head">
+        <span class="eyebrow">06 / 06 · Credentials</span>
+        <h1 class="page-head__title">Certificates</h1>
+      </header>
+
+      <div class="container">
+        <!-- To categorize a certificate, set data-category on its <li>: project-management, cybersecurity or others -->
+        <div
+          class="filter"
+          role="group"
+          aria-label="Filter certificates by category"
+          data-cert-filter
+        >
+          <button
+            class="filter__btn"
+            type="button"
+            data-filter="all"
+            data-label="All"
+            aria-pressed="true"
+          >
+            All <span class="filter__count" aria-hidden="true"></span>
+          </button>
+          <button
+            class="filter__btn"
+            type="button"
+            data-filter="project-management"
+            data-label="Project Management"
+            aria-pressed="false"
+          >
+            Project Management
+            <span class="filter__count" aria-hidden="true"></span>
+          </button>
+          <button
+            class="filter__btn"
+            type="button"
+            data-filter="cybersecurity"
+            data-label="Cybersecurity"
+            aria-pressed="false"
+          >
+            Cybersecurity <span class="filter__count" aria-hidden="true"></span>
+          </button>
+          <button
+            class="filter__btn"
+            type="button"
+            data-filter="artificial-intelligence"
+            data-label="Artificial-Intelligence"
+            aria-pressed="false"
+          >
+            Aritificial Intelligence
+            <span class="filter__count" aria-hidden="true"></span>
+          </button>
+          <button
+            class="filter__btn"
+            type="button"
+            data-filter="others"
+            data-label="Others"
+            aria-pressed="false"
+          >
+            Others <span class="filter__count" aria-hidden="true"></span>
+          </button>
+        </div>
+        <p class="sr-only" role="status" data-cert-status></p>
+
+        <div class="empty-state" data-cert-empty hidden>
+          <svg
+            class="empty-state__icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="3" y="4" width="18" height="14" rx="2" />
+            <path d="M7 9h10M7 13h6" />
+            <path d="m15 18 1.5 3 1.5-3" />
+          </svg>
+          <p class="empty-state__title">Nothing here yet</p>
+          <p>
+            Certificates in this category will appear here once they're added.
+          </p>
+        </div>
+
+        <ul class="certs" role="list">
+          <li class="cert" data-reveal data-category="project-management">
+            <button
+              class="cert__view"
+              type="button"
+              data-lightbox="Fundamentals of Predictive Project Management"
+            >
+              <img
+                src="Fundamentals of Predictive Project Management Badge.png"
+                alt="Fundamentals of Predictive Project Management"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="cert__zoom" aria-hidden="true">View</span>
+            </button>
+            <div class="cert__body">
+              <h2 class="cert__title">
+                Fundamentals of Predictive Project Management
+              </h2>
+              <p class="cert__date">September 28, 2026</p>
+            </div>
+          </li>
+
+          <li class="cert" data-reveal data-category="artificial-intelligence">
+            <button
+              class="cert__view"
+              type="button"
+              data-lightbox="AI Career Readiness"
+            >
+              <img
+                src="landon_certificate_ai-career-readiness.png"
+                alt="AI Career Readiness Certificate"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="cert__zoom" aria-hidden="true">View</span>
+            </button>
+            <div class="cert__body">
+              <h2 class="cert__title">AI Career Readiness</h2>
+              <p class="cert__date">September 27, 2026</p>
+            </div>
+          </li>
+
+          <li class="cert" data-reveal data-category="others">
+            <button
+              class="cert__view"
+              type="button"
+              data-lightbox="Certificate of Completion - PBA-X Wave 5"
+            >
+              <img
+                src="PBA-X.png"
+                alt="Certificate of Completion, PBA-X Wave 5"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="cert__zoom" aria-hidden="true">View</span>
+            </button>
+            <div class="cert__body">
+              <h2 class="cert__title">PBA-X Wave 5</h2>
+              <p class="cert__date">December 18, 2025</p>
+            </div>
+          </li>
+
+          <li class="cert" data-reveal data-category="cybersecurity">
+            <button
+              class="cert__view"
+              type="button"
+              data-lightbox="Introduction To The Threat Landscape 3.0 - Fortinet"
+            >
+              <img
+                src="IntroductionToThreatLandscape3.0.png"
+                alt="Introduction To The Threat Landscape 3.0 - Fortinet"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="cert__zoom" aria-hidden="true">View</span>
+            </button>
+            <div class="cert__body">
+              <h2 class="cert__title">
+                Introduction To The Threat Landscape 3.0
+              </h2>
+              <p class="cert__date">December 11, 2025</p>
+            </div>
+          </li>
+
+          <li class="cert" data-reveal data-category="cybersecurity">
+            <button
+              class="cert__view"
+              type="button"
+              data-lightbox="Certificate of Course Completion - Cisco: Introduction to Cybersecurity"
+            >
+              <img
+                src="IntroToCybersec.png"
+                alt="Certificate of Course Completion, Cisco: Introduction to Cybersecurity"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="cert__zoom" aria-hidden="true">View</span>
+            </button>
+            <div class="cert__body">
+              <h2 class="cert__title">Introduction to Cybersecurity</h2>
+              <p class="cert__date">November 9, 2025</p>
+            </div>
+          </li>
+
+          <li class="cert" data-reveal data-category="others">
+            <button
+              class="cert__view"
+              type="button"
+              data-lightbox="Certificate of Participation - Globe Community Builders Pitch Day"
+            >
+              <img
+                src="Globe.png"
+                alt="Certificate of Participation, Globe Community Builders Pitch Day"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="cert__zoom" aria-hidden="true">View</span>
+            </button>
+            <div class="cert__body">
+              <h2 class="cert__title">Globe Community Builders Pitch Day</h2>
+              <p class="cert__date">March 29, 2025</p>
+            </div>
+          </li>
+
+          <li class="cert" data-reveal data-category="others">
+            <button
+              class="cert__view"
+              type="button"
+              data-lightbox="Certificate of Completion - TON Hackers League Hackathon Manila Bootcamp"
+            >
+              <img
+                src="Ton.png"
+                alt="Certificate of Completion, TON Hackers League Hackathon Manila Bootcamp"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="cert__zoom" aria-hidden="true">View</span>
+            </button>
+            <div class="cert__body">
+              <h2 class="cert__title">
+                TON Hackers League Hackathon Manila Bootcamp
+              </h2>
+              <p class="cert__date">November 15-17, 2024</p>
+            </div>
+          </li>
+
+          <li class="cert" data-reveal data-category="others">
+            <button
+              class="cert__view"
+              type="button"
+              data-lightbox="Certificate of Participation - Genesis Block: JBECP PUP Manila Mainnet Launch"
+            >
+              <img
+                src="jbecpmainnet.png"
+                alt="Certificate of Participation, Genesis Block: JBECP PUP Manila Mainnet Launch"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="cert__zoom" aria-hidden="true">View</span>
+            </button>
+            <div class="cert__body">
+              <h2 class="cert__title">
+                Genesis Block: JBECP PUP Manila Mainnet Launch
+              </h2>
+              <p class="cert__date">October 4, 2024</p>
+            </div>
+          </li>
+
+          <li class="cert" data-reveal data-category="others">
+            <button
+              class="cert__view"
+              type="button"
+              data-lightbox="Certificate of Completion - CodeQuest: 30 Days of Back-end Development"
+            >
+              <img
+                src="CodeQuest.png"
+                alt="Certificate of Completion, CodeQuest: 30 Days of Back-end Development"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="cert__zoom" aria-hidden="true">View</span>
+            </button>
+            <div class="cert__body">
+              <h2 class="cert__title">
+                CodeQuest: 30 Days of Back-end Development
+              </h2>
+              <p class="cert__date">June 10, 2024</p>
+            </div>
+          </li>
+
+          <li class="cert" data-reveal data-category="others">
+            <button
+              class="cert__view"
+              type="button"
+              data-lightbox="Certificate of Participation - AWS Cloud Club Student Community Day Philippines"
+            >
+              <img
+                src="CommunityDay.png"
+                alt="Certificate of Participation, AWS Cloud Club Student Community Day Philippines"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="cert__zoom" aria-hidden="true">View</span>
+            </button>
+            <div class="cert__body">
+              <h2 class="cert__title">
+                AWS Cloud Club Student Community Day Philippines
+              </h2>
+              <p class="cert__date">June 10, 2024</p>
+            </div>
+          </li>
+
+          <li class="cert" data-reveal data-category="others">
+            <button
+              class="cert__view"
+              type="button"
+              data-lightbox="Certificate of Appreciation - Department of Budget and Management"
+            >
+              <img
+                src="Collabothon.png"
+                alt="Certificate of Appreciation, Department of Budget and Management"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="cert__zoom" aria-hidden="true">View</span>
+            </button>
+            <div class="cert__body">
+              <h2 class="cert__title">
+                Collabothon: Idea Jam | Department of Budget and Management: ICT
+                Week
+              </h2>
+              <p class="cert__date">February 23, 2024</p>
+            </div>
+          </li>
+
+          <li class="cert" data-reveal data-category="others">
+            <button
+              class="cert__view"
+              type="button"
+              data-lightbox="Champion - ADT, ICT STEM Siyensining: National Arts and Philippine Innovation Month 2023"
+            >
+              <img
+                src="Siyensining.jpg"
+                alt="Champion certificate, ADT, ICT STEM Siyensining: National Arts and Philippine Innovation Month 2023"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="cert__zoom" aria-hidden="true">View</span>
+            </button>
+            <div class="cert__body">
+              <h2 class="cert__title">
+                Champion - ADT, ICT STEM Siyensining: National Arts and
+                Philippine Innovation Month 2023
+              </h2>
+              <p class="cert__date">2023</p>
+            </div>
+          </li>
+
+          <li class="cert" data-reveal data-category="others">
+            <button
+              class="cert__view"
+              type="button"
+              data-lightbox="Certificate of Appreciation - Debunking Misconceptions in SHS TVL-ICT Strand"
+            >
+              <img
+                src="Webinar.jpg"
+                alt="Certificate of Appreciation, Debunking Misconceptions in SHS TVL-ICT Strand"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="cert__zoom" aria-hidden="true">View</span>
+            </button>
+            <div class="cert__body">
+              <h2 class="cert__title">
+                Debunking Misconceptions in SHS TVL-ICT Strand
+              </h2>
+              <p class="cert__date">December 3, 2022</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <nav
+        class="container pager"
+        data-pager
+        aria-label="Previous and next page"
+      ></nav>
+    </main>
+
+    <footer class="site-footer" id="site-footer"></footer>
+  </body>
+</html>
