@@ -871,6 +871,101 @@
     apply(location.hash.slice(1) || "all");
   }
 
+  /* ---------- Project screenshot carousels ----------
+     Markup: [data-carousel] > [data-carousel-track] > .shots__slide[data-title]
+     Swipe/scroll, arrow buttons, dots and ←/→ keys all move one slide. */
+  function initCarousels() {
+    document.querySelectorAll("[data-carousel]").forEach((root) => {
+      const track = root.querySelector("[data-carousel-track]");
+      const slides = [...track.querySelectorAll(".shots__slide")];
+      if (!slides.length) return;
+      const label = root.querySelector("[data-carousel-label]");
+      const count = root.querySelector("[data-carousel-count]");
+      const status = root.querySelector("[data-carousel-status]");
+      const pipsWrap = root.querySelector("[data-carousel-pips]");
+      const titles = slides.map(
+        (s, i) => s.dataset.title || `Screenshot ${i + 1}`,
+      );
+      let index = 0;
+
+      const pips = titles.map((t, i) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "shots__pip";
+        b.setAttribute(
+          "aria-label",
+          `Show ${t} (${i + 1} of ${slides.length})`,
+        );
+        b.addEventListener("click", () => go(i));
+        pipsWrap && pipsWrap.append(b);
+        return b;
+      });
+
+      const render = (announce) => {
+        label.textContent = titles[index];
+        count.textContent = `${index + 1} / ${slides.length}`;
+        pips.forEach((p, i) =>
+          p.setAttribute("aria-current", String(i === index)),
+        );
+        slides.forEach((s, i) => {
+          const current = i === index;
+          s.setAttribute("aria-hidden", String(!current));
+          s.querySelectorAll("button, a").forEach(
+            (el) => (el.tabIndex = current ? 0 : -1),
+          );
+        });
+        if (announce)
+          status.textContent = `${titles[index]}, ${index + 1} of ${slides.length}`;
+      };
+
+      function go(i) {
+        index = (i + slides.length) % slides.length; // wraps around at both ends
+        track.scrollTo({
+          left: slides[index].offsetLeft,
+          behavior: prefersReducedMotion.matches ? "auto" : "smooth",
+        });
+        render(true);
+      }
+
+      // Keep the UI in sync when the visitor swipes or scrolls the track.
+      let settle;
+      track.addEventListener("scroll", () => {
+        clearTimeout(settle);
+        settle = setTimeout(() => {
+          const i = Math.round(track.scrollLeft / track.clientWidth);
+          if (i !== index && slides[i]) {
+            index = i;
+            render(true);
+          }
+        }, 90);
+      });
+
+      root
+        .querySelector("[data-carousel-prev]")
+        .addEventListener("click", () => go(index - 1));
+      root
+        .querySelector("[data-carousel-next]")
+        .addEventListener("click", () => go(index + 1));
+      root.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          go(index - 1);
+        }
+        if (e.key === "ArrowRight") {
+          e.preventDefault();
+          go(index + 1);
+        }
+      });
+
+      // Re-align after the window is resized so a slide never sits half-way.
+      window.addEventListener("resize", () =>
+        track.scrollTo({ left: slides[index].offsetLeft }),
+      );
+
+      render(false);
+    });
+  }
+
   /* ---------- Certificate lightbox ---------- */
   function initLightbox() {
     const triggers = document.querySelectorAll("[data-lightbox]");
@@ -917,6 +1012,7 @@
   renderFooter();
   initImageFallbacks();
   initCertFilter();
+  initCarousels();
   initReveals();
   initContact();
   initLightbox();
