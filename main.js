@@ -998,7 +998,7 @@
       btn.addEventListener("click", () => {
         const source = btn.querySelector("img");
         opener = btn;
-        img.src = source.currentSrc || source.src;
+        img.src = btn.dataset.full || source.currentSrc || source.src;
         img.alt = source.alt;
         title.textContent = btn.dataset.lightbox;
         dialog.showModal();
